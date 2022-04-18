@@ -182,6 +182,14 @@ public class PatientController {
 		System.out.println("-------------status"+paymentStatus.getPaymentStatus()+"patid"+paymentStatus.getPatId());
 		int updateBillingStatus = patientServiceImpl.updateBillingStatus(paymentStatus);
 		if(updateBillingStatus==1)
+		return Response.success(paymentStatus.getPaymentStatus());
+		return Response.error(0);
+	}
+	//deepak update patient status
+	@PostMapping("/updateRelaseDate")
+	public ResponseEntity<?> updateReleaseDate(@RequestBody UpdatePatientDto paymentStatus){
+		int updateBillingStatus = patientServiceImpl.updateRelaseDate(paymentStatus);
+		if(updateBillingStatus==1)
 		return Response.success(1);
 		return Response.error(0);
 	}

@@ -8,6 +8,7 @@ import Patient from '../../components/accountantModal/Patient'
 
 
 
+
 const Accountant = () => {
     const [patients, setPatients] = useState([]);
   //to toggle invoice modal to fullscreen
@@ -17,42 +18,28 @@ const Accountant = () => {
   const handleShow = () => setShow(true);
   const [patient, setPatient] = useState({});
 
-  //object to collect bill data
-  const [bill, setBill] = useState({});
+  
   //to reload page on every update
   const [dataChangeFlag, setDataChangeFlag] = useState(false);
+ 
+ 
   //   to toggle the modal flag
   const SetInvoiceModal = (patient) => {
-    GetPatientBillFromServer(patient.patId);
     setPatient(patient);
     handleShow();
     setInvoiceToggleFlag(true);
   };
-  // to load the bill
-  const GetPatientBillFromServer = (id) => {
-    
-    const url = `${URL}/patient/getPatientBill/${id}`;
-    axios.get(url).then((res) => {
-      const result = res.data;
-      console.log(res);
-      if (result.status == "success") {
-        setBill(result.data);
-      }
-    });
-  };
   
-  //function to get details of particular patient from server
+  
+  
 
-  //to turn off modal
-  const ResetInvoiceModal = () => {
-    handleClose();
-    setInvoiceToggleFlag(false);
-  };
+  
   //function to change the dataflag
   const ToggleDataChangelag = () => {
      
     setDataChangeFlag(!dataChangeFlag);
   };
+  
   // to get data from server
   const GetDataFromServer = () => {
     //to reset datachanged flag to initial state
@@ -68,6 +55,9 @@ const Accountant = () => {
       }
     });
   };
+
+  //toggle release date 
+  //------------------------------------------------------------------------------------------------------
   useEffect(() => {
     GetDataFromServer();
   }, [dataChangeFlag]);
@@ -97,13 +87,11 @@ const Accountant = () => {
   {
     //debugger;
     const url = `${URL}/patient/getbyname/${searchName}`
-    console.log(url);
+    console.log(searchName);
     axios.get(url).then((response)=>
     {
       const result = response.data;
-      console.log("-----------------")
       console.log(result)
-      console.log("-----------------")
       if (result["status"] == "success") {
         console.log(result["data"]);
         // --------------------------
@@ -123,30 +111,27 @@ const Accountant = () => {
 
   const logoutUser = () => {
     // remove the logged users details from session storage
-
     sessionStorage.removeItem('name')
     sessionStorage.removeItem('loginStatus')
-
-
-
     // navigate to sign in component
     navigate('/signin')
   }
 
+
   return (
     <div>
-        {/* to pop up model */}
         {invoiceToggleFlag && (
         <InvoiceModal
-        bill={bill}
           patient={patient}
           setInvoiceToggleFlag={setInvoiceToggleFlag}
           handleClose={handleClose}
           show={show}
-          ResetInvoiceModal={ResetInvoiceModal}
           ToggleDataChangelag={ToggleDataChangelag}
         />
       )}
+ 
+
+      
       <br />
 
       <div className="row">
@@ -199,13 +184,13 @@ const Accountant = () => {
             { 
               users.filter((e)=>
               {
-                console.log(e)
+                //console.log(e)
                 if (searchName == "")
                 {
                   return e
                 }else if (e.name.toLowerCase().includes(searchName.toLowerCase())) 
                 {
-                  console.log(e)
+                  //console.log(e)
                   return e
                 }
               })
@@ -236,20 +221,16 @@ const Accountant = () => {
             <th>Name</th>
             <th>Payment Status</th>
             <th>Phone Number</th>
-            
             <th>Update Status</th>
-          </tr>
+          </tr> 
         </thead>
         <tbody >
         {patients.map((p) => {
-            return <Patient patient={p} SetInvoiceModal={SetInvoiceModal} />;
+            return <Patient patient={p}  SetInvoiceModal={SetInvoiceModal} />;
           })}
         </tbody>
       </table>
-
       <hr></hr>
-
-      
       <br /><br /><br /><br />
     </div>
   )

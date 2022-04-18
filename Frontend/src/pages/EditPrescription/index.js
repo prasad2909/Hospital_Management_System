@@ -16,28 +16,10 @@ const EditPatientsPrescription = () => {
     console.log(state)
     const [prescription, setPrescription] = useState([])
     const [patient, setPatient] = useState([])
-    const [selectedValue, setSelectedValue] = useState('')
     const [noOfDays, setNoOfDays] = useState('')
     const [medicineName, setMedicineName] = useState('')
     const navigate = useNavigate()
 
-    const print = () => {
-        console.log(selectedValue)
-        console.log(noOfDays)
-    }
-
-
-    // const handleChange = (e) => {
-    //     setSelectedValue({ medicineName: (e.target.value) })
-    // }
-
-    //  const handleChange = (e) => {
-    //     setSelectedValue(e.target.value)
-    // }
-
-    // const noOfDaysChange = (e) => {
-    //     setNoOfDays({ noOfDays: (Number(e.target.value)) })
-    // }
 
     const noOfDaysChange = (e) => {
         setNoOfDays(e.target.value)
@@ -55,8 +37,6 @@ const EditPatientsPrescription = () => {
             }
         })
     }
-
-
 
     const addPrescription = () => {
         const body = {

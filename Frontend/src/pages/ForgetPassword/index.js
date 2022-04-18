@@ -103,8 +103,9 @@ const ForgetPassword = () => {
           //to delete
           console.log("security questin flag " + securityQuestionFlag);
         } else {
+          console.log(`in the else part...`)
           setSecurityQuestionFlag(false);
-          securityAnswerFlag(false);
+          setSecurityAnswerFlag(false);
           toast.warning("invalid security answer");
         }
       }
@@ -284,8 +285,8 @@ const ForgetPassword = () => {
                     <FcLock />{" "}
                     
                   </label>
-                  <div style={{ color: "green" }} onClick={UpdatePassword}>
-                      update
+                  <div style={{ color: "green" }}>
+                      <Link onClick={UpdatePassword} to='/signin'>update</Link>
                     </div>
                   <input
                     onChange={(e) => {

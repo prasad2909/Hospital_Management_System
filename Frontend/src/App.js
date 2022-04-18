@@ -44,7 +44,7 @@ function App() {
           <br />
           <div className="container">
             <Routes>
-              <Route path="/s" element={<AuthorizeUser />} />
+              <Route path="/" element={<AuthorizeUser />} />
               <Route path="/signin" element={<Signin />} />
               <Route path="/signup" element={<Signup />} />
               <Route path="/admin" element={<Admin />} />
@@ -87,3 +87,5 @@ function App() {
 }
 
 export default App
+
+

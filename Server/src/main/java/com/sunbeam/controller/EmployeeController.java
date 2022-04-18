@@ -131,7 +131,7 @@ public class EmployeeController {
 	}
 	@PostMapping("/answerCheck")
 	public ResponseEntity<?> checkIfAnswerIsValid(@RequestBody EmployeePasswordResetDto user ){
-		return Response.success(employeeServiceImpl.findIfSecurityQuestionIsCorrect(user));
+		return Response.success(employeeServiceImpl.findIfSecurityAnswerIsCorrect(user));
 	}
 	
 	@PostMapping("/updatePassword")

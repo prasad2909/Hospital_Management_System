@@ -132,5 +132,16 @@ public class PatientServiceImpl {
 		
 		return 0;
 	}
+	//deepak update status to paid or unpaid 
+	public int updateRelaseDate(UpdatePatientDto status) {
+		if(status.getPatId()!=0) {
+			Patient activePatient = patientDao.getById(status.getPatId());
+			activePatient.setDateOfRelease(status.getRelaseDate());
+			patientDao.save(activePatient);
+			
+				return 1;
+		}
+		return 0;
+	}
 	
 }

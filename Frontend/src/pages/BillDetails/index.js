@@ -33,9 +33,6 @@ const BillDetails = () => {
         })
     }
 
-    const load = () => {
-        console.log(pres)
-    }
 
     const loadDoctorChargesDetails = async () => {
         const url = `${URL}/patient/doctorCharges/${doctorId}`   //to get the doctor charges

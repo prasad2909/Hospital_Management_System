@@ -2,8 +2,8 @@ import React from 'react'
 import { useLocation, useNavigate } from 'react-router'
 import { useEffect, useState } from 'react'
 import axios from 'axios'
-import { URL } from '../../config'
-import Navbar from '../../components/Navbar/Navbar'
+import { URL } from '../../../../../Updated_code/Frontend/src/config'
+import Navbar from '../../../../../Updated_code/Frontend/src/components/Navbar/Navbar'
 import { FaHospital,FaPaste,FaNotesMedical,FaMedkit,FaLock,FaLocationArrow,FaLayerGroup,FaLaptopMedical,
 FaHospitalUser,FaFileAlt,FaBackspace,FaArrowLeft,FaRegUserCircle,FaUser,FaUserCircle,FaUserAlt,FaSignOutAlt,FaClipboard,F } from "react-icons/fa"
 import {FcFeedback} from 'react-icons/fc'

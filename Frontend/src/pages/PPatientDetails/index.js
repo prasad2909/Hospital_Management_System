@@ -136,11 +136,6 @@ const PatientDetails = () => {
               <td>Payment Status</td>
               <td>{patient.paymentStatus}</td>
             </tr>
-            {patient.paymentStatus == "paid" &&
-              <tr>
-                <td>Bill Amount</td>
-                <td>{patient.billAmount}</td>
-              </tr>}
           </tbody>
         </table>
 

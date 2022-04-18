@@ -70,7 +70,7 @@ const Signin = () => {
 
           if (role == "admin") {
             navigate("/admin");
-          } else if (role == "accountant") {navigate("/accountant")}
+          } else if (role == "accountant") { navigate("/accountant") }
           else if (role == "doctor") {
             navigate("/doctor-home");
           } else if (role == "receptionist") navigate("/receptionist");
